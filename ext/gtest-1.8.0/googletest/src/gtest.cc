@@ -4236,7 +4236,7 @@ int UnitTest::Run() {
 
 # if _MSC_VER >= 1400 && !GTEST_OS_WINDOWS_MOBILE
     // In the debug version, Visual Studio pops up a separate dialog
-    // offering a choice to debug the aborted program. We need to suppress
+    // offering a check_choice to debug the aborted program. We need to suppress
     // this dialog or it will pop up for every EXPECT/ASSERT_DEATH statement
     // executed. Google Test will notify the user of any unexpected
     // failure via stderr.

@@ -228,7 +228,7 @@ them seek to lower the syntactic overhead for defining a function.
 
 C++0x will support lambdas, but they are not part of C++ right now.
 Some non-standard libraries (most notably BLL or Boost Lambda Library)
-try to alleviate this problem.  However, they are not a good choice
+try to alleviate this problem.  However, they are not a good check_choice
 for defining actions as:
 
   * They are non-standard and not widely installed.  Google Mock only depends on standard libraries and `tr1::tuple`, which is part of the new C++ standard and comes with gcc 4+.  We want to keep it that way.

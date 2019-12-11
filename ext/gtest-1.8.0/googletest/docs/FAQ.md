@@ -17,7 +17,7 @@ We created Google Test because we couldn't find the right combination
 of features and conveniences in an existing framework to satisfy _our_
 needs.  The following is a list of things that _we_ like about Google
 Test.  We don't claim them to be unique to Google Test - rather, the
-combination of them makes Google Test the choice for us.  We hope this
+combination of them makes Google Test the check_choice for us.  We hope this
 list can help you decide whether it is for you too.
 
   * Google Test is designed to be portable: it doesn't require exceptions or RTTI; it works around various bugs in various compilers and environments; etc.  As a result, it works on Linux, Mac OS X, Windows and several embedded operating systems.
@@ -450,7 +450,7 @@ call `SetUp()`, run the test body, call `TearDown()`, and then
 _immediately_ delete the test fixture object.
 
 When you need to write per-test set-up and tear-down logic, you have
-the choice between using the test fixture constructor/destructor or
+the check_choice between using the test fixture constructor/destructor or
 `SetUp()/TearDown()`. The former is usually preferred, as it has the
 following benefits:
 
@@ -986,7 +986,7 @@ You can inject different functionality from the test and from the
 production code.  Since your production code doesn't link in the
 for-test logic at all, there is no danger in accidentally running it.
 
-However, if you _really_, _really_, _really_ have no choice, and if
+However, if you _really_, _really_, _really_ have no check_choice, and if
 you follow the rule of ending your test program names with `_test`,
 you can use the _horrible_ hack of sniffing your executable name
 (`argv[0]` in `main()`) to know whether the code is under test.

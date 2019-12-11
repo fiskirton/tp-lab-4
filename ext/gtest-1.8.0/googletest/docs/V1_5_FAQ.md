@@ -17,7 +17,7 @@ We created Google Test because we couldn't find the right combination
 of features and conveniences in an existing framework to satisfy _our_
 needs.  The following is a list of things that _we_ like about Google
 Test.  We don't claim them to be unique to Google Test - rather, the
-combination of them makes Google Test the choice for us.  We hope this
+combination of them makes Google Test the check_choice for us.  We hope this
 list can help you decide whether it is for you too.
 
   * Google Test is designed to be portable.  It works where many STL types (e.g. `std::string` and `std::vector`) don't compile.  It doesn't require exceptions or RTTI.  As a result, it runs on Linux, Mac OS X, Windows and several embedded operating systems.

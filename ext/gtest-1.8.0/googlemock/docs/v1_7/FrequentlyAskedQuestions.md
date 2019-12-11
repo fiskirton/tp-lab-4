@@ -205,7 +205,7 @@ need any help.
 ## When using Google Mock, do I have to use Google Test as the testing framework?  I have my favorite testing framework and don't want to switch. ##
 
 Google Mock works out of the box with Google Test.  However, it's easy
-to configure it to work with any testing framework of your choice.
+to configure it to work with any testing framework of your check_choice.
 [Here](http://code.google.com/p/googlemock/wiki/V1_7_ForDummies#Using_Google_Mock_with_Any_Testing_Framework) is how.
 
 ## How am I supposed to make sense of these horrible template errors? ##
