@@ -22,7 +22,7 @@ add_subdirectory(ext/gtest-1.8.0)
 include_directories(ext/gtest-1.8.0/googletest/include)
 
 set(SRC_FILES ${PROJECT_SOURCE_DIR}
-        back/AutomataStates.cpp include/Automata.h
+        include/Automata.h
         src/AutomataOptions.cpp
         )
 
