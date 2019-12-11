@@ -17,23 +17,6 @@ protected:
     Automata * automata;
 };
 
-TEST_F(AutomataTestSuit, test_check_command_test1)
-{
-    string test_str = "test";
-    int res = Automata::check_command(test_str);
-
-    EXPECT_EQ(res, -1);
-}
-
-
-TEST_F(AutomataTestSuit, test_check_command_test2)
-{
-    string test_str = "0";
-    int res = Automata::check_command(test_str);
-
-    EXPECT_EQ(res, 0);
-}
-
 
 TEST_F(AutomataTestSuit, test_off) {
     automata->off();
@@ -45,42 +28,54 @@ TEST_F(AutomataTestSuit, test_cancel) {
     EXPECT_EQ(automata->get_state(), WAIT);
 }
 
-TEST_F(AutomataTestSuit, test_coin1) {
+TEST_F(AutomataTestSuit, test_coin_automata_off) {
     automata->coin(10);
+    EXPECT_EQ(automata->get_cash(), 0);
+}
+
+
+TEST_F(AutomataTestSuit, test_coin_automata_on) {
+    automata->on();
+    automata->coin(20);
+    EXPECT_EQ(automata->get_cash(), 20);
+}
+
+TEST_F(AutomataTestSuit, test_coin_negative) {
+    automata->on();
+    automata->coin(-20);
+    EXPECT_EQ(automata->get_cash(), 0);
+}
+
+TEST_F(AutomataTestSuit, test_coin_accept_state) {
+    automata->on();
+    automata->coin(20);
+    EXPECT_EQ(automata->get_state(), ACCEPT);
+}
+
+TEST_F(AutomataTestSuit, test_cook_state1) {
+    automata->on();
+    automata->coin(20);
+    automata->choice(10);
+    automata->cook();
+    EXPECT_EQ(automata->get_cash(), 20);
+}
+
+TEST_F(AutomataTestSuit, test_cook_state2) {
+    automata->on();
+    automata->coin(20);
+    automata->choice(-1);
+    automata->cook();
+    EXPECT_EQ(automata->get_cash(), 20);
+}
+
+
+TEST_F(AutomataTestSuit, test_cook_state3) {
+    automata->on();
+    automata->coin(20);
+    automata->choice(1);
+    automata->cook();
     EXPECT_EQ(automata->get_cash(), 10);
 }
-
-TEST_F(AutomataTestSuit, test_coin2) {
-    automata->coin(-100);
-    EXPECT_EQ(automata->get_state(), 0);
-}
-
-TEST_F(AutomataTestSuit, test_check_cash1) {
-    automata->coin(100);
-    EXPECT_EQ(automata->check(1), 1);
-}
-
-TEST_F(AutomataTestSuit, test_check_cash2) {
-    automata->coin(50);
-    EXPECT_EQ(automata->check(10), 0);
-}
-
-TEST_F(AutomataTestSuit, test_check_choice1) {
-    EXPECT_EQ(automata->check_choice(101), 0);
-}
-
-TEST_F(AutomataTestSuit, test_check_choice2) {
-    EXPECT_EQ(automata->check_choice(1), 1);
-}
-
-TEST_F(AutomataTestSuit, test_check_choice3) {
-    EXPECT_EQ(automata->check_choice(0), 0);
-}
-
-TEST_F(AutomataTestSuit, test_check_choice4) {
-    EXPECT_EQ(automata->check_choice(-1), 0);
-}
-
 
 
 

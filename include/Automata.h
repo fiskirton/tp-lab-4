@@ -37,12 +37,23 @@ class Automata {
 private:
     int cash;
     STATES state;
+    int user_choice;
 
-    void wait_state();
-    void acceptance_state();
-    void check_state(int );
-    void cook_state(int );
+private:
 
+    bool check(int );
+    int finish();
+    int in_menu(int );
+
+public:
+    int get_cash(){return this->cash;}
+    int get_state(){ return this->state;}
+
+    void set_cash(int value){ this->cash = value;}
+    void set_state(STATES value){ this->state = value;}
+
+    int get_user_choice() const;
+    void set_user_choice(int userChoice);
 
 public:
 
@@ -53,23 +64,15 @@ public:
 
     ~Automata() = default;
 
-    int get_cash(){return this->cash;}
-    int get_state(){ return this->state;}
+    int off();
+    int cancel();
 
-    void set_cash(int value){ this->cash = value;}
-    void set_state(STATES value){ this->state = value;}
-
-    void off();
-    void cancel();
-
-    void coin(int );
-    bool check(int );
-    void finish(int );
-    int check_choice(int );
-    static void cook();
+    int coin(int );
+    int choice(int );
+    int cook();
     void getMenu();
-    static int check_command(const string& );
-    void on();
+
+    int on();
 
 };
 

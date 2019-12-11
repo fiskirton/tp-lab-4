@@ -59,7 +59,7 @@ cross-platform.). If you don't have CMake installed already, you can
 download it for free from <http://www.cmake.org/>.
 
 CMake works by generating native makefiles or build projects that can
-be used in the compiler environment of your check_choice.  The typical
+be used in the compiler environment of your choice.  The typical
 workflow starts with:
 
     mkdir mybuild       # Create a directory to hold the build output.

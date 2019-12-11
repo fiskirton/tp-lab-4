@@ -12,7 +12,7 @@ error-prone work.
 Variadic templates and variadic macros can alleviate the problem.
 However, while both are being considered by the C++ committee, neither
 is in the standard yet or widely supported by compilers.  Thus they
-are often not a good check_choice, especially when your code needs to be
+are often not a good choice, especially when your code needs to be
 portable. And their capabilities are still limited.
 
 As a result, authors of such libraries often have to write scripts to

@@ -2,76 +2,122 @@
 // Created by fiskirton on 10.12.2019.
 //
 
-#include <zconf.h>
 #include "Automata.h"
 
-void Automata::on()
-{
-    this->set_state(WAIT);
-    this->wait_state();
-}
-
-void Automata::off()
-{
-
-    this->set_state(OFF);
-}
-
-void Automata::cancel()
+int Automata::on()
 {
 
     this->set_state(WAIT);
+    return this->get_state();
 
 }
 
-void Automata::finish(int choice) {
-    cout << "Your" << " " << menu[choice].name << ", " << "Sir" << endl;
-    cout << "Your cash is" << " " << this->get_cash() << endl;
+int Automata::off()
+{
+    if (this->get_state() == WAIT)
+    {
+        this->set_state(OFF);
+        return this->get_state();
+    } else
+    {
+        return  -1;
+    }
+
+
 }
 
-void Automata:: cook()
+int Automata::cancel()
 {
 
-    sleep(3);
+    this->set_state(WAIT);
+    return this->get_state();
+
+}
+
+int Automata::finish()
+{
+
+    this->set_cash(this->get_cash() - Automata::menu[this->get_user_choice()].price);
+    this->set_state(WAIT);
+    return this->get_state();
+
+
+}
+
+int Automata:: cook()
+{
+    if (this->get_state() == ACCEPT && this->check(this->get_user_choice()))
+    {
+        this->set_state(COOK);
+        this->finish();
+        return this->get_state();
+    } else
+    {
+        this->cancel();
+        return -1;
+    }
+
 
 }
 
 bool Automata::check(int choice)
 {
-    return this->cash >= menu[choice].price;
+    return this->get_cash() >= menu[choice].price;
 }
 
-int Automata::check_choice(int to_check)
+int Automata::choice(int to_check)
 {
-    return menu.find(to_check) != menu.end();
+    if (this->get_state() == ACCEPT and this->in_menu(to_check))
+    {
+        this->set_user_choice(to_check);
+        return this->get_user_choice();
+    } else
+    {
+        this->cancel();
+        return -1;
+    }
 }
 
-void Automata::getMenu() {
+void Automata::getMenu()
+{
     cout << "№" <<  " | " << "Position" << " | " << "Price" << endl;
-    for(const auto& pos: menu){
+    for(const auto& pos: menu)
+    {
         cout << pos.first << " | " << pos.second.name << " | " << pos.second.price << endl;
     }
 }
 
-void Automata::coin(int coins) {
-
-    int new_cash = this->get_cash() + coins;
-    this->set_cash(new_cash);
-}
-
-int Automata::check_command(const string& command_str)
+int Automata::coin(int coins)
 {
-    int command;
 
-    try
+    if (this->get_state() == ACCEPT || this->get_state() == WAIT)
     {
-        command = stoi(command_str);
-    }
+        this->set_state(ACCEPT);
 
-    catch (exception &ex)
+        if (coins < 0)
+        {
+            return -1;
+        }
+        int new_cash = this->get_cash() + coins;
+        this->set_cash(new_cash);
+
+        return this->get_cash();
+    }else
     {
         return -1;
     }
 
-    return command;
+}
+
+int Automata::in_menu(int to_check)
+{
+    return menu.find(to_check) != menu.end();
+}
+
+int Automata::get_user_choice() const {
+    return user_choice;
+}
+
+void Automata::set_user_choice(int userChoice) {
+    user_choice = userChoice;
 }

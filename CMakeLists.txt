@@ -22,9 +22,9 @@ add_subdirectory(ext/gtest-1.8.0)
 include_directories(ext/gtest-1.8.0/googletest/include)
 
 set(SRC_FILES ${PROJECT_SOURCE_DIR}
-        src/AutomataStates.cpp include/Automata.h
+        back/AutomataStates.cpp include/Automata.h
         src/AutomataOptions.cpp
-        src/AutomataStates.cpp)
+        back/AutomataStates.cpp)
 
 
 set(CMAKE_CXX_STANDARD 11)
